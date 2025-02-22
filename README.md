@@ -3,7 +3,7 @@
 
 （作者是大二在校生，项目刚开始，但持续更新，可以先点一个star常回来看看，希望对你有帮助，QQ：2111867383）
 
-**持续更新的算法实战仓库 | 结构化代码 | 完整解题文档 | 可复现测试用例**
+**持续更新的算法实战仓库 | 结构化代码 | 完整解题文档 | 可复现测试用例 | 多解法实现 | 方法优化**
 
 ![](https://img.shields.io/badge/Java-17-007396?logo=java)
 ![](https://img.shields.io/github/last-commit/NullCat/Algorithm-Showcase?color=blue)
