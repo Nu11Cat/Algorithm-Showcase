@@ -1,6 +1,7 @@
-## [1. 两数之和] (https://leetcode.cn/problems/two-sum/description/?envType=study-plan-v2&envId=top-100-liked)
+# [1. 两数之和] 
+## (https://leetcode.cn/problems/two-sum/description/?envType=study-plan-v2&envId=top-100-liked)
 
-**标签** 数组 |  哈希表
+#### **标签** 数组 |  哈希表
 
 
 ### 问题描述
@@ -9,9 +10,9 @@
 你可以按任意顺序返回答案。
 
 
-#### 解法分析（详细注释见java文件）
+### 解法分析（详细注释见java文件）
 *注意*返回数组下标，不是数组对应的值
-##### 方法1 暴力枚举
+### 方法1 暴力枚举
 
 两层 for 循环嵌套，枚举数组中的每一个数
 **时间复杂度**: O(N^2)
@@ -30,7 +31,7 @@ class Solution {
 }
 ```
 
-##### 方法2 哈希表
+### 方法2 哈希表
 
 暴力嵌套的时间复杂度过高
 考虑到我们需要“ *快速寻找数组中是否存在目标元素* ”，我们可以使用哈希表来寻找 target-x
@@ -50,8 +51,3 @@ class Solution {
     }
 }
 ```
-
-
-### 测试示例
-**输入**: nums = [3,3], target = 6  
-**输出**: [0,1]
