@@ -1,4 +1,4 @@
-```markdown
+
 # Algorithm Showcase 🚀
 
 **持续更新的算法实战仓库 | 结构化代码 | 完整解题文档 | 可复现测试用例**
