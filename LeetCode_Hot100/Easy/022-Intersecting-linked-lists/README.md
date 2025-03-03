@@ -1,41 +1,86 @@
-# [54. 螺旋矩阵] 
-## (https://leetcode.cn/problems/spiral-matrix/description/?envType=study-plan-v2&envId=top-100-liked)
+# [160. 相交链表] 
+## (https://leetcode.cn/problems/intersection-of-two-linked-lists/description/?envType=study-plan-v2&envId=top-100-liked)
 
-#### **标签** 数组 | 模拟 | 矩阵
+#### **标签** 哈希表 | 链表 | 双指针
+
 
 
 ### 问题描述
-给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
+题目数据 保证 整个链式结构中不存在环。
+
+注意，函数返回结果后，链表必须 保持其原始结构 。
+![alt text](image.png)
 
 ### 解法分析（详细注释见Java文件）
-### 方法1 分层模拟
+### 方法1 双指针
 
-![alt text](image-1.png)
 
-**时间复杂度**: O(nm)
+**时间复杂度**: O(n+m) m 和 n 是分别是链表 headA 和 headB 的长度
 **空间复杂度**: O(1)
 ```java
-class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int m = matrix.length,n=matrix[0].length;
-        if(matrix==null || m ==0 || n==0) return list;
-        int l=0,r=n-1;
-        int t=0,b=m-1;
-        while(list.size()<m*n){
-            for(int y = l;y <= r;y++){ list.add(matrix[t][y]); }
-            for(int x = t+1;x <= b;x++){ list.add(matrix[x][r]); }
-            if(l < r && t < b){
-                for(int y = r-1;y >= l+1;y--){ list.add(matrix[b][y]); }
-            for(int x = b;x> t;x--){ list.add(matrix[x][l]); }
-            }
-            l++;r--;t++;b--;
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null) return null;
+        ListNode pa=headA,pb=headB;
+        while(pa != pb){
+            pa= (pa==null) ? headB : pa.next;
+            pb= (pb==null) ? headA : pb.next;
         }
-        return list;
+        return pa;
+    }
+}
+/*
+4 1 8 4 5/5 6 1 8 4 5 
+5 6 1 8 4 5 /4 1 8 4 5 */
+```
+### 方法2 哈希集合
+
+
+**时间复杂度**: O(n+m)
+**空间复杂度**: O(m)
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> visited = new HashSet<ListNode>();
+        ListNode temp = headA;
+        while (temp != null) {
+            visited.add(temp);
+            temp = temp.next;
+        }
+        temp = headB;
+        while (temp != null) {
+            if (visited.contains(temp)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
     }
 }
 ```
-
 ### 比较与总结
 #### 不同之处：
 
